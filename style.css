@@ -1,0 +1,440 @@
+/* ====================================================
+   Devasena Info Project — style.css
+   ==================================================== */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --clr-primary:   #7b2d8b;
+  --clr-secondary: #c0392b;
+  --clr-accent:    #f39c12;
+  --clr-gold:      #d4a017;
+  --clr-bg:        #fdf6f0;
+  --clr-bg-alt:    #f5e6d3;
+  --clr-text:      #2c1810;
+  --clr-text-muted:#6b4c3b;
+  --clr-white:     #ffffff;
+
+  --ff-heading: 'Georgia', 'Times New Roman', serif;
+  --ff-body:    'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+  --radius:    0.5rem;
+  --shadow:    0 4px 20px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.18);
+  --transition: 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--ff-body);
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.7;
+}
+
+/* ---------- Container ---------- */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 100vh;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(123, 45, 139, 0.85) 0%,
+      rgba(192, 57, 43, 0.80) 50%,
+      rgba(212, 160, 23, 0.75) 100%
+    ),
+    url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Kartikeya_with_Devasena_and_Valli.jpg/800px-Kartikeya_with_Devasena_and_Valli.jpg')
+    center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero-overlay {
+  padding: 2rem;
+  animation: fadeInDown 1s ease;
+}
+
+.hero-title {
+  font-family: var(--ff-heading);
+  font-size: clamp(3rem, 10vw, 7rem);
+  color: var(--clr-white);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: #ffe8c4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--clr-primary);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 0;
+}
+
+.navbar ul li a {
+  display: block;
+  padding: 1rem 1.4rem;
+  color: var(--clr-white);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background var(--transition), color var(--transition);
+}
+
+.navbar ul li a:hover {
+  background: var(--clr-gold);
+  color: var(--clr-text);
+}
+
+/* ---------- Sections ---------- */
+.section {
+  padding: 5rem 0;
+}
+
+.section-alt {
+  background-color: var(--clr-bg-alt);
+}
+
+.section-title {
+  font-family: var(--ff-heading);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--clr-primary);
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--clr-gold);
+  border-radius: 2px;
+  margin: 0.6rem auto 0;
+}
+
+/* ---------- Card Grid (About) ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+  border-top: 4px solid var(--clr-gold);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.card h3 {
+  font-family: var(--ff-heading);
+  color: var(--clr-primary);
+  margin-bottom: 0.6rem;
+  font-size: 1.2rem;
+}
+
+/* ---------- Timeline (Origin) ---------- */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 2rem;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--clr-primary), var(--clr-gold));
+  border-radius: 2px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.timeline-marker {
+  flex-shrink: 0;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: var(--clr-primary);
+  color: var(--clr-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: 0 0 0 4px var(--clr-gold);
+  z-index: 1;
+}
+
+.timeline-content {
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  box-shadow: var(--shadow);
+  flex: 1;
+}
+
+.timeline-content h3 {
+  font-family: var(--ff-heading);
+  color: var(--clr-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- Attributes Grid ---------- */
+.attributes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.attribute-item {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition);
+  border-bottom: 4px solid var(--clr-secondary);
+}
+
+.attribute-item:hover {
+  transform: translateY(-5px);
+}
+
+.attribute-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.attribute-item h3 {
+  font-family: var(--ff-heading);
+  color: var(--clr-primary);
+  margin-bottom: 0.5rem;
+}
+
+.attribute-item p {
+  font-size: 0.9rem;
+  color: var(--clr-text-muted);
+}
+
+/* ---------- Worship Grid ---------- */
+.worship-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.worship-card {
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.worship-card h3 {
+  font-family: var(--ff-heading);
+  color: var(--clr-primary);
+  margin-bottom: 1.2rem;
+  font-size: 1.2rem;
+  border-bottom: 2px solid var(--clr-gold);
+  padding-bottom: 0.5rem;
+}
+
+.worship-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.worship-card ul li {
+  padding: 0.6rem 0.8rem;
+  background: var(--clr-bg-alt);
+  border-radius: calc(var(--radius) / 2);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* ---------- Significance ---------- */
+.significance-block {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 700px) {
+  .significance-block {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quote-box {
+  background: var(--clr-primary);
+  border-radius: var(--radius);
+  padding: 2rem;
+  position: relative;
+}
+
+.quote-box::before {
+  content: '\201C';
+  font-size: 5rem;
+  color: var(--clr-gold);
+  line-height: 1;
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+}
+
+.quote-box blockquote {
+  color: var(--clr-white);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.8;
+  padding-top: 2rem;
+}
+
+.significance-text p {
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+}
+
+/* ---------- Names Gallery ---------- */
+.names-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+.name-card {
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-top: 3px solid var(--clr-secondary);
+  transition: transform var(--transition);
+}
+
+.name-card:hover {
+  transform: translateY(-5px);
+}
+
+.name-sanskrit {
+  font-size: 1.4rem;
+  color: var(--clr-primary);
+  font-weight: 700;
+}
+
+.name-english {
+  font-weight: 600;
+  color: var(--clr-text);
+}
+
+.name-meaning {
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+  font-style: italic;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background: var(--clr-text);
+  color: #e8d5c4;
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+.footer strong {
+  color: var(--clr-gold);
+}
+
+.footer-sub {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #a08070;
+}
+
+/* ---------- Responsive Tweaks ---------- */
+@media (max-width: 640px) {
+  .navbar ul li a {
+    padding: 0.75rem 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  .timeline::before {
+    left: 1.5rem;
+  }
+
+  .timeline-marker {
+    width: 3rem;
+    height: 3rem;
+  }
+}
